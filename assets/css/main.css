@@ -45,7 +45,7 @@
     top: 0;
     width: 100%;
     max-width: 480px;
-    /* border-bottom: 1px solid #ebebeb; */
+    border-bottom: 1px solid #ebebeb;
   }
   
   /* HEADER */
@@ -215,8 +215,9 @@
    
   /* PLAYLIST */
   .playlist {
-    margin-top: 416px;
+    margin-top: 430px;
     padding: 12px;
+    
   }
   
   .song {
