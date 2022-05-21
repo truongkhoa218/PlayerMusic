@@ -65,8 +65,11 @@
     </div>
     </div>
 
-    <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
-
+<div class="controls-time">
+  <p class="controls-time--left">00:00</p>
+  <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+  <p class="controls-time--right">00:00</p>
+</div>
     <audio id="audio" src=""></audio>
   </div>
 
@@ -253,9 +256,35 @@
 
         // Timeupdate of Song
         audio.ontimeupdate = function() {
+          const timeStart = $('.controls-time--left')
+          const timeCount = $('.controls-time--right')
+
           if (audio.duration) {
             const progressPercent = Math.floor(audio.currentTime / audio.duration * 100)
             progress.value = progressPercent
+
+            // Tinh thoi gian bai hat 
+            var e = Math.floor(audio.currentTime); //Thời gian bài hát đang chạy hiện tại
+            var d = e%60; // số giây
+            var b = Math.floor(e/60); //số phút
+            if (d<10) {
+              var c = 0;// số giây hàng chục
+
+            }else {
+              c = ""
+            }
+            timeStart.textContent = "0" + b + ":" + c + d;
+            // Time Count
+            var ee = Math.floor (audio.duration) ; //Tổng số thời gian bài hát
+            var dd = ee%60; // số giây
+            var bb = Math.floor(ee/60); //số phút
+            if (dd<10) {
+              var cc = 0;// số giây hàng chục
+
+            }else {
+              cc = ""
+            }
+            timeCount.textContent =  "0" + bb + ":" + cc + dd;
           }
         }
 
